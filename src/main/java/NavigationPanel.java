@@ -6,9 +6,9 @@ import org.openqa.selenium.support.PageFactory;
 public class NavigationPanel {
     private WebDriver driver;
 
-    @FindBy(id="n-mainpage")
+    @FindBy(xpath = "//*[@id=\"n-mainpage\"]/a")
     private WebElement homePageButton;
-    @FindBy(id="n-help")
+    @FindBy(xpath ="//*[@id=\"n-help\"]/a")
     private WebElement helpButton;
 
     public  NavigationPanel(WebDriver driver){
@@ -16,12 +16,19 @@ public class NavigationPanel {
         PageFactory.initElements(driver,this);
     }
 
-    public void openHomePage(){
+    public HomePage openHomePage(){
         this.homePageButton.click();
+        return new HomePage(this.driver);
     }
 
-    public void openHelp(){
+    public HomePage openHelp(){
         this.helpButton.click();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return new HomePage(this.driver);
     }
 
 }

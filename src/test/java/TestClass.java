@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class TestClass {
+    // -ea -Ddestination1="Paris" -Ddestination2="Madrid"
     private WebDriver driver;
 
     @BeforeClass
@@ -46,12 +47,25 @@ public class TestClass {
     }
 
     @Test
-    public void openHomePageFromDestination(){
+    public void openHomePageFromDestinationPage(){
         PagePrin pagePrin = new PagePrin(this.driver);
         pagePrin.connexionPagePrincipale();
         String destination1 =System.getProperty("destination1");
         pagePrin.clickFrenchButton().getHeader().destinationSearch(destination1).getNavigationPanel().openHomePage();
     }
+    @Test
+    public void test(){
+        PagePrin pagePrincipale = new PagePrin(this.driver);
+        pagePrincipale.connexionPagePrincipale();
+        String destination1 = System.getProperty("destination1");
+        String destination2 = System.getProperty("destination2");
+        pagePrincipale.clickFrenchButton()
+                .getHeader().destinationSearch(destination1)
+                .getHeader().destinationSearch(destination2)
+                .getNavigationPanel().openHomePage()
+                .getNavigationPanel().openHelp();
+    }
+    
 
 
 
