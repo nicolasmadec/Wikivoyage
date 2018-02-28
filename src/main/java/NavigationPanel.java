@@ -23,11 +23,6 @@ public class NavigationPanel {
 
     public HomePage openHelp(){
         this.helpButton.click();
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         return new HomePage(this.driver);
     }
 
