@@ -65,7 +65,7 @@ public class TestClass {
                 .getNavigationPanel().openHomePage()
                 .getNavigationPanel().openHelp();
     }
-    
+
 
 
 
